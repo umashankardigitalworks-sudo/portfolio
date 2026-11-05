@@ -1,0 +1,23 @@
+# Sticky Notes Portfolio – Umashankar T
+
+Files: `index.html`, `style.css`, `script.js`. Open `index.html` in a browser; no build step or libraries (only Google Fonts).
+
+## Important: replace the placeholders
+No existing portfolio code was supplied, so your real data is used where the brief gave it (name, role, tools, skills). Anything in `[square brackets]` (about text, experience, projects, education, contact links) is a placeholder. Paste your real content into those notes. To add a screenshot, replace the `.shot` div with `<img src="..." alt="...">`.
+
+## How the sticky-note layout works
+- Every note is an element with class `note` plus a colour class (`n-yellow`, `n-blue`, `n-mint`, `n-pink`, `n-lav`, `n-peach`).
+- Rotation comes from a per-note CSS variable: `style="--r:-2deg"`. Hover lifts the note and reduces its tilt.
+- A `pin` or `tape` span gives each note its fastening. Each section's `.board` is a CSS Grid that collapses from 3-4 columns to 2 (tablet) to 1-2 (mobile).
+- Notes fade in through an `IntersectionObserver`; the hero note gently floats.
+- The Experience timeline uses a dashed vertical line to connect its notes.
+
+## How the bot travels
+- The bot is a fixed, `pointer-events:none` SVG, so it never blocks clicks.
+- `script.js` measures the centre of each section (hero, about, skills, experience, projects, education, contact).
+- Scroll position sets where you are between two section centres. The bot holds its side during the first and last 30% of that stretch (the "pause"), then eases across to the opposite gutter in the middle, sweeping slightly upward to form a curve.
+- Movement direction flips the bot to face the way it travels. Legs step while it moves; when it stops it raises an arm toward the content.
+- CSS handles floating, blinking, head tilt and the antenna light.
+- Mobile: the bot shrinks and stays near the bottom-right with a minimal path. With `prefers-reduced-motion`, it parks in a corner and all animation is off.
+
+Edit `sides` in `script.js` to change which side the bot visits per section.
